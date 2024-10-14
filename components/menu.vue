@@ -2,6 +2,7 @@
   <nav class="font-mono">
     <ul class="flex space-x-4">
       <li>
+        
         <NuxtLink to="/" class="link">Main</NuxtLink>
       </li>
       <li>
