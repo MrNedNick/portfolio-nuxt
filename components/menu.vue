@@ -4,6 +4,7 @@
       <li>
         <NuxtLink to="/" class="link">Main</NuxtLink>
       </li>
+      
       <li>
         <NuxtLink to="/about" class="link">About</NuxtLink>
       </li>
