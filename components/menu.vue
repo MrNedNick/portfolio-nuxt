@@ -6,6 +6,7 @@
       </li>
       
       <li>
+        
         <NuxtLink to="/about" class="link">About</NuxtLink>
       </li>
       <li>
