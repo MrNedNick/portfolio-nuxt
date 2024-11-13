@@ -11,7 +11,6 @@
         <NuxtLink to="/about" class="link">About</NuxtLink> 
       </li>
       <li>
-        
         <NuxtLink to="/projects" class="link">Projects</NuxtLink>
       </li>
     </ul>
