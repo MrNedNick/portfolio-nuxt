@@ -16,7 +16,7 @@
     </ul>
 
     в
-    
+    в
   </nav>
 </template>
 
