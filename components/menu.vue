@@ -15,8 +15,6 @@
       </li>
     </ul>
   </nav>
-  
-
 </template>
 
 <style scoped>
