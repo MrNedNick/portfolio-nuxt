@@ -16,7 +16,7 @@
     </ul>
   </nav>
 </template>
-вв
+ввыыы
 <style scoped>
 .link {
   @apply p-1 hover:bg-gray-200;
