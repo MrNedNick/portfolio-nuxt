@@ -15,6 +15,7 @@
       </li>
     </ul>
   </nav>
+  ;
 </template>
 увыывddd
 <style scoped>
