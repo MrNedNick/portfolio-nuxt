@@ -14,7 +14,7 @@
         <NuxtLink to="/projects" class="link">Projects</NuxtLink>\
       </li>
     </ul>
-  </nav>
+  </nav>в
   ;,dddввdd
 </template>
 увыывdddr
