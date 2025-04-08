@@ -1,33 +1,29 @@
 <template>
-  <div>
-    Hello from the main page
-  </div>
+  <v-text-field label="Search" v-model="search" @input="onInput" />
 </template>
 
 <script setup>
-useSeoMeta({
-  title: 'Main Page',
-  description: 'This is Main Page',
-  ogTitle: 'Main Page',
-  ogDescription: 'Main Page',
-  ogImage: '[og:image]',
-  ogUrl: '[og:url]',
-  twitterTitle: '[twitter:title]',
-  twitterDescription: '[twitter:description]',
-  twitterImage: '[twitter:image]',
-  twitterCard: 'summary'
-})
+import { ref } from "vue";
 
-useHead({
-  htmlAttrs: {
-    lang: 'en'
-  },
-  link: [
-    {
-      rel: 'icon',
-      type: 'image/png',
-      href: '/favicon.png'
-    }
-  ]
-})
+const search = ref("");
+
+function fakeFetch(query) {
+  console.log("Fetching for:", query);
+}
+
+function debounce(fn, delay) {
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      fn(...args);
+    }, delay);
+  };
+}
+
+const debouncedFetch = debounce(fakeFetch, 500);
+
+function onInput() {
+  return debouncedFetch(search.value);
+}
 </script>
