@@ -1,5 +1,10 @@
 <template>
-  <article class="prose dark:prose-invert prose-h1:text-2xl">
-    <ContentDoc path="/about" />
-  </article>
+  <v-text-field 
+    label="Search"
+    v-model="searchInputValue"
+  />
 </template>
+
+<script setup>
+const
+</script>
