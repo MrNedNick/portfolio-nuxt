@@ -18,5 +18,5 @@ function areAnagrams(str1, str2) {
   return true
 }
 
-console.log(areAnagrams('listen', 'silent')) // true
-console.log(areAnagrams('hello', 'world'))   // false
+console.log(areAnagrams('listen', 'silent')) 
+console.log(areAnagrams('hello', 'world'))   
