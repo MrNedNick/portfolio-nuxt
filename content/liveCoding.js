@@ -19,4 +19,4 @@ function areAnagrams(str1, str2) {
 }
 
 console.log(areAnagrams('listen', 'silent')) 
-console.log(areAnagrams('hello', 'world'))   в
+console.log(areAnagrams('hello', 'world')) 
