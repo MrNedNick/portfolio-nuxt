@@ -17,6 +17,6 @@ function areAnagrams(str1, str2) {
   }
   return true
 }
-чd
+чdd
 console.log(areAnagrams('listen', 'silent')) 
 console.log(areAnagrams('hello', 'world')) 
