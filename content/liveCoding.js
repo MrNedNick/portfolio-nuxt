@@ -1,14 +1,31 @@
-// timeout-closure.js
+// Определим объект и универсальную функцию
+const user = {
+  name: "Nikita",
+};
 
-console.log("\n=== TIMEOUT CLOSURE ===");
-
-function delayedPrinter(msg, delay) {
-  console.log(`Setting up timer for "${msg}" (${delay}ms)`);
-
-  setTimeout(() => {
-    console.log(`>> Timer finished: ${msg}`);
-  }, delay);
+function introduce(role, city) {
+  console.log("this:", this);
+  console.log(`Hello, my name is ${this.name}.`);
+  console.log(`I'm a ${role} from ${city}.`);
+  console.log("--------------------------");
 }
 
-delayedPrinter("Hello after 1 second", 1000);
-delayedPrinter("Hello after 2 seconds", 2000);
+// --- call ---
+console.log(">>> CALL");
+introduce.call(user, "Frontend Developer", "Prague");
+
+// --- apply ---
+console.log(">>> APPLY");
+introduce.apply(user, ["Frontend Developer", "Prague"]);
+
+// --- bind ---
+console.log(">>> BIND");
+const boundIntroduce = introduce.bind(user, "Frontend Developer", "Prague");
+
+console.log("Function not called yet (bind):");
+console.log(boundIntroduce); // покажет функцию, а не результат
+
+console.log("Now calling the bound function:");
+boundIntroduce();
+
+console.log(">>> DONE");
