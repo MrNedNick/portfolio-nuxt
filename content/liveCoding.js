@@ -1,31 +1,47 @@
-// Определим объект и универсальную функцию
-const user = {
-  name: "Nikita",
+// prototypes-demo.js
+
+console.log("=== PROTOTYPAL INHERITANCE DEMO ===");
+
+// 1. Родительский объект (прототип)
+const animal = {
+  eats: true,
+  walk() {
+    console.log("[animal] Animal walks");
+  }
 };
 
-function introduce(role, city) {
-  console.log("this:", this);
-  console.log(`Hello, my name is ${this.name}.`);
-  console.log(`I'm a ${role} from ${city}.`);
-  console.log("--------------------------");
-}
+console.log("animal.eats =", animal.eats); // true
 
-// --- call ---
-console.log(">>> CALL");
-introduce.call(user, "Frontend Developer", "Prague");
+// 2. Создаём объект dog, который наследует от animal
+const dog = Object.create(animal); // связываем через прототип
+dog.bark = function () {
+  console.log("[dog] Woof!");
+};
 
-// --- apply ---
-console.log(">>> APPLY");
-introduce.apply(user, ["Frontend Developer", "Prague"]);
+console.log("\n--- DOG OBJECT ---");
+console.log("dog.eats =", dog.eats); // получено по цепочке от animal
+dog.walk(); // вызов метода animal
+dog.bark(); // свой собственный метод
 
-// --- bind ---
-console.log(">>> BIND");
-const boundIntroduce = introduce.bind(user, "Frontend Developer", "Prague");
+// 3. Проверим прототип вручную
+console.log("\n--- PROTOTYPE CHAIN ---");
+console.log("dog.__proto__ === animal:", dog.__proto__ === animal); // true
 
-console.log("Function not called yet (bind):");
-console.log(boundIntroduce); // покажет функцию, а не результат
+// 4. Добавим ещё один уровень наследования
+const husky = Object.create(dog);
+husky.color = "white";
 
-console.log("Now calling the bound function:");
-boundIntroduce();
+console.log("\n--- HUSKY OBJECT ---");
+console.log("husky.eats =", husky.eats);   // унаследовано от animal
+console.log("husky.color =", husky.color); // своё
+husky.walk();  // animal
+husky.bark();  // dog
 
-console.log(">>> DONE");
+// 5. Прототипная цепочка
+console.log("\n--- FULL CHAIN ---");
+console.log("husky -> dog -> animal -> null");
+console.log("husky.__proto__ === dog:", husky.__proto__ === dog);           // true
+console.log("dog.__proto__ === animal:", dog.__proto__ === animal);        // true
+console.log("animal.__proto__ === Object.prototype:", animal.__proto__ === Object.prototype); // true
+console.log("Object.prototype.__proto__ === null:", Object.prototype.__proto__ === null);     // true
+
