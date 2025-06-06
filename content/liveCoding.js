@@ -38,7 +38,7 @@ husky.walk();  // animal
 husky.bark();  // dog
 
 // 5. Прототипная цепочка
-
+дд
 console.log("husky -> dog -> animal -> null");
 console.log("husky.__proto__ === dog:", husky.__proto__ === dog);           // true
 console.log("dog.__proto__ === animal:", dog.__proto__ === animal);        // true
