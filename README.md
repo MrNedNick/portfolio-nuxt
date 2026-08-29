@@ -1,6 +1,7 @@
-# Nuxt 3 Minimal Starter
+# Portfolio
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A Nuxt portfolio with project and blog sections, built with Nuxt Content,
+Vuetify, and Tailwind CSS.
 
 ## Setup
 
@@ -36,6 +37,16 @@ yarn dev
 
 # bun
 bun run dev
+```
+
+## Verification
+
+Route smoke tests start a Nuxt test server and verify the home, projects, and
+blog pages. CI runs the same suite before generating the static site.
+
+```bash
+npm test
+npm run generate
 ```
 
 ## Production
