@@ -9,8 +9,4 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: "",
   },
-  css: ["vuetify/styles", "@mdi/font/css/materialdesignicons.css"],
-  build: {
-    transpile: ["vuetify"],
-  },
 });
