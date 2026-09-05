@@ -5,9 +5,9 @@ describe("portfolio routes", async () => {
   await setup({});
 
   test.each([
-    ["home", "/", "Search"],
+    ["home", "/", "Nikita Nedyalkov"],
     ["projects", "/projects", "Projects"],
-    ["blog", "/blog", "All blog posts list"],
+    ["blog", "/blog", "Blog"],
   ])("renders the %s page", async (_name, path, expectedText) => {
     const html = await $fetch<string>(path);
 
