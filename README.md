@@ -1,86 +1,77 @@
-# Portfolio
+# Nikita Nedyalkov — portfolio
 
-A Nuxt portfolio with project and blog sections, built with Nuxt Content,
-Vuetify, and Tailwind CSS.
+A small personal site: what I work on, a list of my public repositories pulled
+live from GitHub, and a blog written in Markdown with client-side search.
 
-## Setup
+![The blog index with search across titles and post bodies](docs/blog.png)
 
-Make sure to install the dependencies:
+## What is on it
+
+- **Projects** — the public repositories on my GitHub account, fetched from the
+  API, filtered to the ones that have a description and sorted by stars. The
+  page has its own loading and error states, because a third-party API is
+  allowed to be slow or down.
+- **Blog** — posts are Markdown files under `content/blog`, rendered by Nuxt
+  Content. The index searches titles, descriptions and post bodies as you type
+  and highlights the matches; there is no search service, the posts are already
+  on the page.
+- **About** — one Markdown file, so editing it is editing text rather than a
+  component.
+- **Light and dark**, remembered between visits.
+
+![The projects page, built from live GitHub data](docs/projects.png)
+
+## Stack
+
+| | |
+|---|---|
+| Framework | Nuxt 3.13 with the Nuxt 4 compatibility flag (`future.compatibilityVersion: 4`) |
+| Content | `@nuxt/content` 2 — Markdown for the blog and the about page |
+| Styling | Tailwind CSS with the typography plugin |
+| Theme | `@nuxtjs/color-mode`, class-based |
+| Tests | Vitest with `@nuxt/test-utils` |
+| Output | `nuxt generate` — a static site, 21 prerendered routes |
+
+No component framework beyond Tailwind: an earlier version used Vuetify and it
+was removed, so the markup here is plain elements and utility classes.
+
+## Running it
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+npm run dev        # http://localhost:3000
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+npm test           # route smoke tests against a real Nuxt server
+npm run generate   # static build into .output/public
+npx serve .output/public
 ```
 
-## Verification
+Node 22.
 
-Route smoke tests start a Nuxt test server and verify the home, projects, and
-blog pages. CI runs the same suite before generating the static site.
+## Tests and CI
+
+`tests/routes.test.ts` boots a real Nuxt server and asks for `/`, `/projects`
+and `/blog` — the cheapest test that would catch a broken build, a broken route
+or a component that throws on render. CI runs a clean `npm ci`, the tests and a
+static generate on every push and pull request.
+
+## Deploy
+
+The output of `nuxt generate` is a plain static site — any static host will do:
 
 ```bash
-npm test
 npm run generate
+# then deploy .output/public
 ```
 
-## Production
+## Known limits
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- The projects page can only show **public** repositories; most of what I work
+  on is private, so the list is shorter than the work behind it.
+- The blog has a handful of posts, and two of them are still placeholders from
+  the original template.
+- The home page is a single line of text — the site currently leads with the
+  navigation rather than with an introduction.
+- There is no CMS: posting means committing a Markdown file.
