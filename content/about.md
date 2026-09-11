@@ -12,7 +12,7 @@ I like products that stay fast and readable as they grow: strict TypeScript, a r
 
 ## What I've built
 
-- **VibeOS** — a personal life OS: habits, tasks, goals, learning, training, notes and finance, all cross-linked through a typed event bus, so checking off a habit can advance a goal on its own. 16 modules, 146 Vue components, 664 unit tests plus Playwright E2E, a Supabase backend with offline-first sync. [Live demo](https://mrnednick.github.io/VibeOS) · [Source](https://github.com/MrNedNick/VibeOS)
+- **VibeOS** — a personal life OS: habits, tasks, goals, learning, training, notes and finance, all cross-linked through a typed event bus, so checking off a habit can advance a goal on its own. 16 modules, 146 Vue components, 665 unit tests plus Playwright E2E, a Supabase backend with offline-first sync. [Live demo](https://mrnednick.github.io/VibeOS) · [Source](https://github.com/MrNedNick/VibeOS)
 - **oxfeeds-landing** — marketing site for a search-traffic monetization partner: glassmorphism, scroll-reveal, 3D card tilt, count-up stats.
 - **mobilynx-landing** — marketing site for a mobile performance-traffic network across 20+ GEOs.
 
