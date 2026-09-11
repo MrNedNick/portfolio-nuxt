@@ -1,16 +1,14 @@
 # Nikita Nedyalkov — portfolio
 
-A small personal site: what I work on, a list of my public repositories pulled
-live from GitHub, and a blog written in Markdown with client-side search.
+A small personal site: what I work on, a curated set of project case studies,
+and a blog written in Markdown with client-side search.
 
 ![The blog index with search across titles and post bodies](docs/blog.png)
 
 ## What is on it
 
-- **Projects** — the public repositories on my GitHub account, fetched from the
-  API, filtered to the ones that have a description and sorted by stars. The
-  page has its own loading and error states, because a third-party API is
-  allowed to be slow or down.
+- **Projects** — a curated set of case study cards (the problem, what shipped,
+  stack, demo and source links), not a dump of every public repository.
 - **Blog** — posts are Markdown files under `content/blog`, rendered by Nuxt
   Content. The index searches titles, descriptions and post bodies as you type
   and highlights the matches; there is no search service, the posts are already
@@ -19,7 +17,7 @@ live from GitHub, and a blog written in Markdown with client-side search.
   component.
 - **Light and dark**, remembered between visits.
 
-![The projects page, built from live GitHub data](docs/projects.png)
+![The projects page](docs/projects.png)
 
 ## Stack
 
@@ -68,8 +66,8 @@ npm run generate
 
 ## Known limits
 
-- The projects page can only show **public** repositories; most of what I work
-  on is private, so the list is shorter than the work behind it.
+- The projects page shows a handful of curated projects, not the full list of
+  repositories — most of what I work on is private anyway.
 - The blog has a handful of posts, and two of them are still placeholders from
   the original template.
 - There is no CMS: posting means committing a Markdown file.
