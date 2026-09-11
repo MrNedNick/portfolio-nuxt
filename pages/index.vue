@@ -27,7 +27,7 @@
       <p class="text-sm text-gray-600 dark:text-gray-400">
         Habits, tasks, goals, training and finance in one app, where checking
         off a habit can advance a linked goal on its own. 146 Vue components,
-        664 tests, offline-first sync.
+        665 tests, offline-first sync.
       </p>
     </section>
 
