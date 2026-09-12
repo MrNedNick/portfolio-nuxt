@@ -1,3 +1,5 @@
 <template>
-  <h1 class="text-2xl font-semibold">About</h1>
+  <article class="prose dark:prose-invert">
+    <ContentDoc />
+  </article>
 </template>
