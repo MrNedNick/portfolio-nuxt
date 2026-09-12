@@ -24,7 +24,7 @@
 
 <script setup>
 useHead({
-  titleTemplate: "%s - Nikita Nedyalkov",
+  titleTemplate: (title) => (title ? `${title} - Nikita Nedyalkov` : "Nikita Nedyalkov"),
   link: [
     {
       rel: "preconnect",
