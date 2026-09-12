@@ -1,31 +1,29 @@
 ---
-description: "meta description of the page"
+description: "Nikita — frontend developer building scalable, high-performance web apps with Vue 3, React and TypeScript."
 ---
 
-# Hello There, I'm Nikita
-
+# Hello, I'm Nikita
 
 ## About me
 
-I'm Nikita, I'm a developer and a Udemy Instructor. I'm 30,
+Frontend developer with 6+ years building scalable, high-performance web apps in Vue 3, React and TypeScript. Based in Europe.
 
-## What I teach on Udemy
+I like products that stay fast and readable as they grow: strict TypeScript, a real design system, tests that actually run in CI, and no CSS framework doing the thinking for me.
 
-I teach mostly web development and I have courses on:
+## What I've built
 
-- Laravel (PHP framework)
-- Laravel & Vue & Inertia (PHP framework/JavaScript frontend framework)
-- Symfony (PHP framework)
-- NestJS (Node.js framework)
-- Nuxt 3 (JavaScript Full-stack framework)
+- **VibeOS** — a personal life OS: habits, tasks, goals, learning, training, notes and finance, all cross-linked through a typed event bus, so checking off a habit can advance a goal on its own. 16 modules, 146 Vue components, 664 unit tests plus Playwright E2E, a Supabase backend with offline-first sync. [Live demo](https://mrnednick.github.io/VibeOS) · [Source](https://github.com/MrNedNick/VibeOS)
+- **oxfeeds-landing** — marketing site for a search-traffic monetization partner: glassmorphism, scroll-reveal, 3D card tilt, count-up stats.
+- **mobilynx-landing** — marketing site for a mobile performance-traffic network across 20+ GEOs.
 
-## What software/hardware do I use?
+More on the [Projects](/projects) page.
 
-Here's a list of everyday used software and hardware:
+## Toolbox
 
-- MacBook Pro 16 2021
-- Rode NT USB microphone
-- VSCode
-- Chrome
-- ScreenFlow (Mac only)
-- Docker
+Vue · React · TypeScript · JavaScript · Nuxt · Vite · Pinia · Vitest · Playwright · Supabase · CSS · Git
+
+## Get in touch
+
+Open to frontend roles — Vue, React, TypeScript.
+
+📫 **mrnednick@gmail.com**
