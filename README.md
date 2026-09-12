@@ -72,6 +72,4 @@ npm run generate
   on is private, so the list is shorter than the work behind it.
 - The blog has a handful of posts, and two of them are still placeholders from
   the original template.
-- The home page is a single line of text — the site currently leads with the
-  navigation rather than with an introduction.
 - There is no CMS: posting means committing a Markdown file.
