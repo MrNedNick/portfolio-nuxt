@@ -11,6 +11,26 @@
       CI — and no CSS framework doing the thinking for me.
     </p>
 
+    <section class="border border-gray-200 dark:border-gray-600 rounded-sm p-4 mb-8">
+      <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">
+        Currently building
+      </p>
+      <h2 class="font-semibold mb-1">
+        <a
+          href="https://mrnednick.github.io/VibeOS"
+          target="_blank"
+          class="hover:underline"
+          >VibeOS</a
+        >
+        — a personal life OS
+      </h2>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Habits, tasks, goals, training and finance in one app, where checking
+        off a habit can advance a linked goal on its own. 146 Vue components,
+        664 tests, offline-first sync.
+      </p>
+    </section>
+
     <div class="flex gap-4 font-mono text-sm">
       <NuxtLink to="/projects" class="link">View projects →</NuxtLink>
       <NuxtLink to="/blog" class="link">Read the blog →</NuxtLink>
