@@ -1,6 +1,4 @@
-// Curated flagship work shown on /projects. Screenshots are filled in as a
-// separate task — this structure is built to take them without further
-// changes.
+// Curated flagship work shown on /projects.
 export const projects = [
   {
     id: "vibeos",
@@ -16,7 +14,7 @@ export const projects = [
       { label: "components", value: "146" },
       { label: "initial JS (gzip)", value: "114 kB" },
     ],
-    screenshot: null,
+    screenshot: "/images/projects/vibeos.png",
     links: {
       demo: "https://mrnednick.github.io/VibeOS",
       source: "https://github.com/MrNedNick/VibeOS",
@@ -31,7 +29,7 @@ export const projects = [
     result:
       "A dark glassmorphism landing with scroll animations, a GDPR cookie-consent flow, and full legal pages, deployed live.",
     stack: ["Vue 3", "Vite 5", "Vue Router 4"],
-    screenshot: null,
+    screenshot: "/images/projects/oxfeeds.png",
     links: {
       demo: "https://mrnednick.github.io/oxfeeds-landing/",
       source: "https://github.com/MrNedNick/oxfeeds-landing",
@@ -46,7 +44,7 @@ export const projects = [
     result:
       "A clean, themed Vue SPA with dedicated pricing, targeting and legal pages, deployed live via GitHub Pages.",
     stack: ["Vue 3", "Vite 5", "Vue Router 4"],
-    screenshot: null,
+    screenshot: "/images/projects/mobilynx.png",
     links: {
       demo: "https://mrnednick.github.io/mobilynx-landing/",
       source: "https://github.com/MrNedNick/mobilynx-landing",
