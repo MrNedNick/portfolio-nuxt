@@ -14,6 +14,9 @@
 
     <section v-if="pending">Loading...</section>
     <section v-else-if="error">Something went wrong... Try again!</section>
+    <section v-else-if="!posts || posts.length === 0" class="text-gray-500">
+      <p>No posts yet — check back soon.</p>
+    </section>
     <section v-else-if="filteredPosts.length === 0" class="text-gray-500">
       <p>No posts match &ldquo;{{ query }}&rdquo;.</p>
       <button type="button" class="mt-2 underline" @click="query = ''">
