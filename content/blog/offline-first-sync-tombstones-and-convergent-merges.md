@@ -6,8 +6,6 @@ date: "2026-09-15"
 
 # Offline-first sync: tombstones and convergent merges
 
-_Draft — code walkthrough and diagram to follow._
-
 An offline-first app makes a promise that sounds simple and isn't: everything
 works with no connection, and once the connection comes back, every device
 ends up agreeing on the same data. localStorage (or IndexedDB) is the source
@@ -105,6 +103,78 @@ trace back to one of the two mistakes above and disappear once the tombstone
 and the merge key are treated as first-class data instead of an
 afterthought.
 
-Next: the actual merge function, what an effective-timestamp comparison
-looks like in code, and a diagram of a delete travelling from one device to
-another without ever coming back to life.
+## The merge function
+
+Put the two fixes together and the merge itself is small. `effectiveTs`
+folds every timestamp a record could plausibly carry into one number;
+`mergeRecords` then keeps, for each key, whichever side has the larger one:
+
+```ts
+type MergeableRecord = {
+  id?: string
+  category?: string      // budgets have no id — category is their identity
+  updatedAt?: number | string
+  deletedAt?: number
+}
+
+function toMillis(value?: string | number): number {
+  if (typeof value === 'number') return value
+  if (!value) return 0
+  const parsed = new Date(value).getTime()
+  return Number.isFinite(parsed) ? parsed : 0
+}
+
+function effectiveTs(record: MergeableRecord): number {
+  return Math.max(toMillis(record.updatedAt), record.deletedAt ?? 0)
+}
+
+function mergeKey(record: MergeableRecord): string | undefined {
+  return record.id ?? record.category
+}
+
+function mergeRecords<T extends MergeableRecord>(local: T[], remote: T[]): T[] {
+  const byKey = new Map(local.map((item) => [mergeKey(item), item]))
+  for (const incoming of remote) {
+    const key = mergeKey(incoming)
+    const current = byKey.get(key)
+    if (!current || effectiveTs(incoming) > effectiveTs(current)) {
+      byKey.set(key, incoming)
+    }
+  }
+  return Array.from(byKey.values())
+}
+```
+
+Two details carry the whole design. `effectiveTs` never trusts a single
+field — a record with a fresher `deletedAt` than `updatedAt` still wins on
+its delete stamp, which is exactly what stops a stale edit from resurrecting
+something that was removed after it. And `mergeRecords` never special-cases
+a delete: a tombstone is just a record whose `effectiveTs` happens to come
+from `deletedAt`, so it goes through the same comparison as a title change.
+
+Tombstones don't live forever. A periodic sweep drops any record whose
+`deletedAt` is older than a grace window, once every device has plausibly
+had the chance to sync:
+
+```ts
+function collectTombstones(records: MergeableRecord[], maxAgeDays = 30): MergeableRecord[] {
+  const cutoff = Date.now() - maxAgeDays * 86_400_000
+  return records.filter((r) => !r.deletedAt || r.deletedAt >= cutoff)
+}
+```
+
+## Watching a delete travel
+
+The phone deletes a habit while offline and stamps `deletedAt` on it. The
+laptop was offline too and still has the old copy. Neither device is wrong
+yet — they just haven't talked. The merge is what makes them agree, and it
+never needs to know that this particular write was a delete:
+
+::tombstone-sync-diagram
+::
+
+The habit never gets removed from an array on the wire — it gets marked,
+pushed, pulled, and compared like any other write. That's the whole trick:
+by the time two copies of the same data disagree, the fix isn't cleverer
+conflict resolution, it's making sure every write already carries enough
+information — a stable key, a trustworthy timestamp — to resolve itself.
