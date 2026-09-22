@@ -68,6 +68,6 @@ npm run generate
 
 - The projects page shows a handful of curated projects, not the full list of
   repositories — most of what I work on is private anyway.
-- The blog has a handful of posts, and two of them are still placeholders from
-  the original template.
+- The blog has one draft post so far — still being written, no code samples
+  or diagrams yet.
 - There is no CMS: posting means committing a Markdown file.
