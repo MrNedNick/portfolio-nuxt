@@ -38,6 +38,15 @@
   </div>
 </template>
 
+<script setup>
+usePortfolioSeo({
+  title: "Frontend developer",
+  description:
+    "Nikita Nedyalkov builds fast, readable frontend products with Vue, React and TypeScript.",
+  path: "/",
+});
+</script>
+
 <style scoped>
 .link {
   @apply p-1 hover:bg-gray-200 dark:hover:bg-gray-700;

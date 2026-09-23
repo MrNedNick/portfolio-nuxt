@@ -22,6 +22,18 @@
 <script setup>
 const route = useRoute();
 console.log(route.params.slug);
+const { data: article } = await useAsyncData(`article-meta-${route.path}`, () =>
+  queryContent(route.path).findOne()
+);
+
+usePortfolioSeo({
+  title: article.value?.title || "Article",
+  description:
+    article.value?.description ||
+    "Technical writing by Nikita Nedyalkov on frontend engineering.",
+  path: route.path,
+  type: "article",
+});
 
 function formatDate(value) {
   return new Intl.DateTimeFormat("en", {

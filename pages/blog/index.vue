@@ -53,6 +53,13 @@
 </template>
 
 <script setup>
+usePortfolioSeo({
+  title: "Blog",
+  description:
+    "Technical writing on frontend engineering, offline-first sync and maintainable product interfaces.",
+  path: "/blog",
+});
+
 const { data: posts, pending, error } = await useAsyncData("blog-posts", () =>
   queryContent("/blog").find()
 );

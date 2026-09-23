@@ -4,3 +4,12 @@
     <ProjectList />
   </div>
 </template>
+
+<script setup>
+usePortfolioSeo({
+  title: "Projects",
+  description:
+    "Selected frontend projects by Nikita Nedyalkov, including VibeOS and production landing pages.",
+  path: "/projects",
+});
+</script>
