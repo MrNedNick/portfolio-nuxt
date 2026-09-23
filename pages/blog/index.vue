@@ -27,18 +27,23 @@
       <li
         v-for="post in filteredPosts"
         :key="post._path"
-        class="border border-gray-200 rounded-sm p-4 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-800"
+        class="group rounded-xl border border-gray-200 transition hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-sm dark:border-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-800"
       >
-        <NuxtLink :to="post._path">
-          <h2 class="font-semibold" v-html="highlight(post.title || post._path)" />
+        <NuxtLink :to="post._path" class="block p-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900">
+          <div class="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-gray-500 dark:text-gray-400">
+            <time v-if="post.date" :datetime="post.date">{{ formatDate(post.date) }}</time>
+            <span v-if="post.date" aria-hidden="true">·</span>
+            <span>{{ readingTime(post.body) }}</span>
+          </div>
+          <h2 class="text-xl font-semibold text-gray-900 group-hover:underline dark:text-white" v-html="highlight(post.title || post._path)" />
           <p
             v-if="post.description"
-            class="text-sm text-gray-500"
+            class="mt-2 text-gray-600 dark:text-gray-300"
             v-html="highlight(post.description)"
           />
           <p
             v-if="bodyExcerpt(post)"
-            class="text-sm text-gray-500 mt-1"
+            class="mt-3 text-sm text-gray-500 dark:text-gray-400"
             v-html="highlight(bodyExcerpt(post))"
           />
         </NuxtLink>
@@ -92,6 +97,20 @@ function bodyExcerpt(post) {
   const prefix = start > 0 ? "…" : "";
   const suffix = end < post._text.length ? "…" : "";
   return `${prefix}${post._text.slice(start, end).trim()}${suffix}`;
+}
+
+function formatDate(value) {
+  return new Intl.DateTimeFormat("en", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(value));
+}
+
+function readingTime(body) {
+  const words = plainText(body).trim().split(/\s+/).filter(Boolean).length;
+  return `${Math.max(1, Math.ceil(words / 220))} min read`;
 }
 
 function escapeHtml(str) {
