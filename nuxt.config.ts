@@ -6,6 +6,26 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode", "@nuxt/content"],
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: "en",
+      },
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    },
+  },
+  runtimeConfig: {
+    public: {
+      siteUrl:
+        process.env.NUXT_PUBLIC_SITE_URL ||
+        "https://mrnednick.github.io/portfolio-nuxt",
+    },
+  },
+  nitro: {
+    prerender: {
+      routes: ["/sitemap.xml"],
+    },
+  },
   content: {
     highlight: {
       theme: {
