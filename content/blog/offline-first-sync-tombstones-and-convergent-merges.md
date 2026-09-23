@@ -4,8 +4,6 @@ description: "Why a delete has to become a record instead of disappearing, and h
 date: "2026-09-15"
 ---
 
-# Offline-first sync: tombstones and convergent merges
-
 An offline-first app makes a promise that sounds simple and isn't: everything
 works with no connection, and once the connection comes back, every device
 ends up agreeing on the same data. localStorage (or IndexedDB) is the source

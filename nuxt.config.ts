@@ -6,6 +6,14 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode", "@nuxt/content"],
+  content: {
+    highlight: {
+      theme: {
+        default: "github-light",
+        dark: "github-dark",
+      },
+    },
+  },
   colorMode: {
     classSuffix: "",
   },
